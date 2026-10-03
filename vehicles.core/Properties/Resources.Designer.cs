@@ -22,7 +22,7 @@ namespace vehicles.core.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace vehicles.core.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("vehicles.core.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,75 @@ namespace vehicles.core.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make ei tohi olla tühi..
+        /// </summary>
+        public static string Err_Make_IsNullOrWhiteSpace {
+            get {
+                return ResourceManager.GetString("Err_Make_IsNullOrWhiteSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Model ei tohi olla tühi..
+        /// </summary>
+        public static string Err_Model_IsNullOrWhiteSpace {
+            get {
+                return ResourceManager.GetString("Err_Model_IsNullOrWhiteSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Läbisõit ei tohi olla negatiivne..
+        /// </summary>
+        public static string Err_Negativ_Odometer {
+            get {
+                return ResourceManager.GetString("Err_Negativ_Odometer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vahemaa peab olema positiivne arv..
+        /// </summary>
+        public static string Err_Positive_Distance {
+            get {
+                return ResourceManager.GetString("Err_Positive_Distance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} ujus {1} km.
+        /// </summary>
+        public static string Str_Boat_AddDistance {
+            get {
+                return ResourceManager.GetString("Str_Boat_AddDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} sõitis {1} km.
+        /// </summary>
+        public static string Str_Car_AddDistance {
+            get {
+                return ResourceManager.GetString("Str_Car_AddDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        public static string Str_Vehicle_Name {
+            get {
+                return ResourceManager.GetString("Str_Vehicle_Name", resourceCulture);
             }
         }
     }

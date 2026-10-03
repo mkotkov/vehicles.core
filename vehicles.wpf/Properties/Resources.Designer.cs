@@ -70,6 +70,15 @@ namespace vehicles.wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lisa amfiib.
+        /// </summary>
+        public static string Str_AddAmphibious {
+            get {
+                return ResourceManager.GetString("Str_AddAmphibious", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lisa paat.
         /// </summary>
         public static string Str_AddBoat {
@@ -124,11 +133,29 @@ namespace vehicles.wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sisesta kehtiv vahemaa..
+        /// </summary>
+        public static string Str_InvalidDistance {
+            get {
+                return ResourceManager.GetString("Str_InvalidDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Läbisõit: {0} km.
         /// </summary>
         public static string Str_MileageFormat {
             get {
                 return ResourceManager.GetString("Str_MileageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uus amfiib.
+        /// </summary>
+        public static string Str_NewAmphibious {
+            get {
+                return ResourceManager.GetString("Str_NewAmphibious", resourceCulture);
             }
         }
         

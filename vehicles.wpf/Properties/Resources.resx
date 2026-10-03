@@ -165,4 +165,13 @@
   <data name="Str_NewBoat" xml:space="preserve">
     <value>Uus paat</value>
   </data>
+  <data name="Str_AddAmphibious" xml:space="preserve">
+    <value>Lisa amfiib</value>
+  </data>
+  <data name="Str_NewAmphibious" xml:space="preserve">
+    <value>Uus amfiib</value>
+  </data>
+  <data name="Str_InvalidDistance" xml:space="preserve">
+    <value>Sisesta kehtiv vahemaa.</value>
+  </data>
 </root>
