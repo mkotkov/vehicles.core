@@ -1,6 +1,8 @@
-﻿using vehicles.core.Properties;
+﻿using vehicles.core.interfaces;
+using vehicles.core.Properties;
+using Vehicles.Core;
 
-namespace Vehicles.Core;
+namespace vehicles.core.entities;
 
 public class AmphibiousCar : Vehicle, IDriveable, ISwimmable
 {
@@ -19,4 +21,5 @@ public class AmphibiousCar : Vehicle, IDriveable, ISwimmable
         return string.Format(Resources.Str_Boat_AddDistance, Make, km);
     }
     public override string Move(double km) => Drive(km);
+    public override string Signal() => string.Format(Resources.Str_AmphibiousCar_Signal, Name);
 }

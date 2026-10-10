@@ -138,4 +138,16 @@
   <data name="Str_Vehicle_Name" xml:space="preserve">
     <value>{0} {1}</value>
   </data>
+  <data name="Str_Vehicles_Blink_Lights" xml:space="preserve">
+    <value> {0} vilgutab tulesid.</value>
+  </data>
+  <data name="Str_Car_Signal" xml:space="preserve">
+    <value>{0} annab signaali: piip!</value>
+  </data>
+  <data name="Str_Boat_Signal" xml:space="preserve">
+    <value>{0} annab signaali: tuut!</value>
+  </data>
+  <data name="Str_AmphibiousCar_Signal" xml:space="preserve">
+    <value>{0} annab signaali: piip-tuut!</value>
+  </data>
 </root>

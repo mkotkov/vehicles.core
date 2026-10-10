@@ -97,6 +97,24 @@ namespace vehicles.wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Paatide garaaž.
+        /// </summary>
+        public static string Str_BoatGarage {
+            get {
+                return ResourceManager.GetString("Str_BoatGarage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autode garaaž.
+        /// </summary>
+        public static string Str_CarGarage {
+            get {
+                return ResourceManager.GetString("Str_CarGarage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Halda sõidukeid ja käivita tegevusi.
         /// </summary>
         public static string Str_Description {
@@ -133,11 +151,29 @@ namespace vehicles.wpf.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Viga: {0}.
+        /// </summary>
+        public static string Str_ErrorFormat {
+            get {
+                return ResourceManager.GetString("Str_ErrorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sisesta kehtiv vahemaa..
         /// </summary>
         public static string Str_InvalidDistance {
             get {
                 return ResourceManager.GetString("Str_InvalidDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:HH:mm:ss} {1}.
+        /// </summary>
+        public static string Str_LogEntryFormat {
+            get {
+                return ResourceManager.GetString("Str_LogEntryFormat", resourceCulture);
             }
         }
         

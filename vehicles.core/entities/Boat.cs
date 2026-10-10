@@ -1,6 +1,8 @@
-﻿using vehicles.core.Properties;
+﻿using vehicles.core.interfaces;
+using vehicles.core.Properties;
+using Vehicles.Core;
 
-namespace Vehicles.Core;
+namespace vehicles.core.entities;
 
 public class Boat : Vehicle, ISwimmable
 {
@@ -14,4 +16,5 @@ public class Boat : Vehicle, ISwimmable
     }
 
     public override string Move(double km) => Swim(km);
+    public override string Signal() => string.Format(Resources.Str_Boat_Signal, Name);
 }

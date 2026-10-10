@@ -25,6 +25,7 @@ public abstract class Vehicle
     }
 
     public abstract string Move(double km);
+    public abstract string Signal();
 
     protected void AddDistance(double km)
     {
@@ -33,4 +34,6 @@ public abstract class Vehicle
 
         Odometer += km;
     }
+
+    public virtual string BlinkLights() => string.Format(Resources.Str_Vehicles_Blink_Lights, Name);
 }

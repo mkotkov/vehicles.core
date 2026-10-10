@@ -97,11 +97,29 @@ namespace vehicles.core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} annab signaali: piip-tuut!.
+        /// </summary>
+        public static string Str_AmphibiousCar_Signal {
+            get {
+                return ResourceManager.GetString("Str_AmphibiousCar_Signal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} ujus {1} km.
         /// </summary>
         public static string Str_Boat_AddDistance {
             get {
                 return ResourceManager.GetString("Str_Boat_AddDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} annab signaali: tuut!.
+        /// </summary>
+        public static string Str_Boat_Signal {
+            get {
+                return ResourceManager.GetString("Str_Boat_Signal", resourceCulture);
             }
         }
         
@@ -115,11 +133,29 @@ namespace vehicles.core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} annab signaali: piip!.
+        /// </summary>
+        public static string Str_Car_Signal {
+            get {
+                return ResourceManager.GetString("Str_Car_Signal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} {1}.
         /// </summary>
         public static string Str_Vehicle_Name {
             get {
                 return ResourceManager.GetString("Str_Vehicle_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  {0} vilgutab tulesid..
+        /// </summary>
+        public static string Str_Vehicles_Blink_Lights {
+            get {
+                return ResourceManager.GetString("Str_Vehicles_Blink_Lights", resourceCulture);
             }
         }
     }

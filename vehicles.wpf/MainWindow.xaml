@@ -7,10 +7,10 @@
         xmlns:res="clr-namespace:vehicles.wpf.Properties;assembly=vehicles.wpf"
         mc:Ignorable="d"
         Title="{x:Static res:Resources.Str_Title}"
-        Height="580"
-        Width="940"
-        MinWidth="900"
-        MinHeight="550">
+        Height="760"
+        Width="1180"
+        MinWidth="1120"
+        MinHeight="720">
 
     <Window.Background>
         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -217,12 +217,26 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- ===== Log item ===== -->
+        <Style x:Key="LogItem" TargetType="ListBoxItem">
+            <Setter Property="Padding" Value="0,3"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
 
     <Grid Margin="22">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="210"/>
         </Grid.RowDefinitions>
 
         <!-- Header -->
@@ -232,13 +246,15 @@
                        Style="{StaticResource Caption}" Margin="0,2,0,0"/>
         </StackPanel>
 
+        <!-- BODY: two garages + details -->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="290"/>
+                <ColumnDefinition Width="280"/>
+                <ColumnDefinition Width="280"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- LEFT CARD: vehicle list -->
+            <!-- CAR GARAGE -->
             <Border Grid.Column="0" Style="{StaticResource Card}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -247,33 +263,61 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="{x:Static res:Resources.Str_Vehicles}" Style="{StaticResource Headline2}"
-                               Margin="0,0,0,14"/>
+                    <TextBlock Grid.Row="0" Text="{x:Static res:Resources.Str_CarGarage}"
+                               Style="{StaticResource Headline2}" Margin="0,0,0,14"/>
 
-                    <ListBox Grid.Row="1" x:Name="VehicleList" BorderThickness="0"
+                    <ListBox Grid.Row="1" x:Name="CarList" BorderThickness="0"
                              Background="Transparent"
-                             ItemsSource="{Binding Vehicles}"
+                             ItemsSource="{Binding CarGarage.Vehicles}"
                              DisplayMemberPath="Name"
-                             ItemContainerStyle="{StaticResource VehicleItem}"/>
+                             ItemContainerStyle="{StaticResource VehicleItem}"
+                             SelectionChanged="CarList_SelectionChanged"/>
 
-                    <StackPanel Grid.Row="2" Margin="0,14,0,0">
-                        <UniformGrid Rows="1">
-                            <Button x:Name="AddCarButton" Content="{x:Static res:Resources.Str_AddCar}"
-                                    Style="{StaticResource SecondaryButton}"
-                                    Margin="0,0,5,0" Click="AddCar_Click"/>
-                            <Button x:Name="AddBoatButton" Content="{x:Static res:Resources.Str_AddBoat}"
-                                    Style="{StaticResource SecondaryButton}"
-                                    Margin="5,0,0,0" Click="AddBoat_Click"/>
-                        </UniformGrid>
-                        <Button x:Name="AddAmphibiousButton" Content="{x:Static res:Resources.Str_AddAmphibious}"
+                    <UniformGrid Grid.Row="2" Rows="1" Margin="0,14,0,0">
+                        <Button x:Name="AddCarButton" Content="{x:Static res:Resources.Str_AddCar}"
                                 Style="{StaticResource SecondaryButton}"
-                                Margin="0,10,0,0" Click="AddAmphibious_Click"/>
-                    </StackPanel>
+                                Margin="0,0,5,0" Click="AddCar_Click"/>
+                        <Button x:Name="AddAmphibiousToCarsButton"
+                                Content="{x:Static res:Resources.Str_AddAmphibious}"
+                                Style="{StaticResource SecondaryButton}"
+                                Margin="5,0,0,0" Click="AddAmphibiousToCars_Click"/>
+                    </UniformGrid>
                 </Grid>
             </Border>
 
-            <!-- RIGHT CARD: details, actions, log -->
+            <!-- BOAT GARAGE -->
             <Border Grid.Column="1" Style="{StaticResource Card}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{x:Static res:Resources.Str_BoatGarage}"
+                               Style="{StaticResource Headline2}" Margin="0,0,0,14"/>
+
+                    <ListBox Grid.Row="1" x:Name="BoatList" BorderThickness="0"
+                             Background="Transparent"
+                             ItemsSource="{Binding BoatGarage.Vehicles}"
+                             DisplayMemberPath="Name"
+                             ItemContainerStyle="{StaticResource VehicleItem}"
+                             SelectionChanged="BoatList_SelectionChanged"/>
+
+                    <UniformGrid Grid.Row="2" Rows="1" Margin="0,14,0,0">
+                        <Button x:Name="AddBoatButton" Content="{x:Static res:Resources.Str_AddBoat}"
+                                Style="{StaticResource SecondaryButton}"
+                                Margin="0,0,5,0" Click="AddBoat_Click"/>
+                        <Button x:Name="AddAmphibiousToBoatsButton"
+                                Content="{x:Static res:Resources.Str_AddAmphibious}"
+                                Style="{StaticResource SecondaryButton}"
+                                Margin="5,0,0,0" Click="AddAmphibiousToBoats_Click"/>
+                    </UniformGrid>
+                </Grid>
+            </Border>
+
+            <!-- DETAILS CARD -->
+            <Border Grid.Column="2" Style="{StaticResource Card}">
                 <StackPanel>
                     <TextBlock x:Name="SelectedText" d:Text="Valitud: Volvo V60"
                                Style="{StaticResource Headline2}"/>
@@ -287,12 +331,12 @@
                     </Border>
 
                     <!-- Distance input -->
-                    <TextBlock Text="{x:Static res:Resources.Str_Distance}" Style="{StaticResource Subtitle}"
-                               Margin="0,22,0,6"/>
+                    <TextBlock Text="{x:Static res:Resources.Str_Distance}"
+                               Style="{StaticResource Subtitle}" Margin="0,22,0,6"/>
                     <TextBox x:Name="DistanceBox" Text="10" Width="140"
                              HorizontalAlignment="Left" Style="{StaticResource InputBox}"/>
 
-                    <!-- Actions (Visibility can be driven by IDriveable / ISwimmable) -->
+                    <!-- Actions (Visibility is driven by IDriveable / ISwimmable) -->
                     <UniformGrid Rows="1" Margin="0,18,0,0">
                         <Button x:Name="DriveButton" Content="{x:Static res:Resources.Str_Drive}"
                                 Style="{StaticResource PrimaryButton}"
@@ -304,31 +348,47 @@
                                 Style="{StaticResource DangerButton}"
                                 Margin="6,0,0,0" Click="Remove_Click"/>
                     </UniformGrid>
-
-                    <!-- Activity log (info alert style) -->
-                    <TextBlock Text="{x:Static res:Resources.Str_ActivityLog}" Style="{StaticResource Subtitle}"
-                               Margin="0,26,0,8"/>
-                    <Border Background="#EAF1FD" BorderBrush="#7FA6EE" BorderThickness="1"
-                            CornerRadius="{StaticResource RadiusMedium}" Padding="14,12"
-                            MinHeight="84">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border Width="22" Height="22" CornerRadius="11"
-                                    Background="{StaticResource Primary}"
-                                    VerticalAlignment="Top" Margin="0,1,12,0">
-                                <TextBlock Text="i" Foreground="White" FontWeight="Bold"
-                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                            <TextBlock Grid.Column="1" x:Name="LogText" TextWrapping="Wrap"
-                                       Foreground="{StaticResource TextPrimary}"
-                                       d:Text="Volvo sõitis 10 km.&#x0A;Läbisõit: 130 km."/>
-                        </Grid>
-                    </Border>
                 </StackPanel>
             </Border>
         </Grid>
+
+        <!-- ACTIVITY LOG (history, newest first) -->
+        <Border Grid.Row="2" Style="{StaticResource Card}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{x:Static res:Resources.Str_ActivityLog}"
+                           Style="{StaticResource Subtitle}" Margin="0,0,0,8"/>
+
+                <Border Grid.Row="1" Background="#EAF1FD" BorderBrush="#7FA6EE"
+                        BorderThickness="1" CornerRadius="{StaticResource RadiusMedium}"
+                        Padding="14,8">
+                    <ListBox x:Name="LogList" BorderThickness="0" Background="Transparent"
+                             ItemsSource="{Binding LogEntries}"
+                             ItemContainerStyle="{StaticResource LogItem}"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Text}" TextWrapping="Wrap">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsError}" Value="True">
+                                                    <Setter Property="Foreground" Value="{StaticResource Danger}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

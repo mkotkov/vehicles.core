@@ -174,4 +174,20 @@
   <data name="Str_InvalidDistance" xml:space="preserve">
     <value>Sisesta kehtiv vahemaa.</value>
   </data>
+  <data name="Str_CarGarage" xml:space="preserve">
+    <value>Autode garaaž</value>
+    <comment>Garage</comment>
+  </data>
+  <data name="Str_BoatGarage" xml:space="preserve">
+    <value>Paatide garaaž</value>
+    <comment>Garage</comment>
+  </data>
+  <data name="Str_LogEntryFormat" xml:space="preserve">
+    <value>{0:HH:mm:ss} {1}</value>
+    <comment>Garage</comment>
+  </data>
+  <data name="Str_ErrorFormat" xml:space="preserve">
+    <value>Viga: {0}</value>
+    <comment>Garage</comment>
+  </data>
 </root>

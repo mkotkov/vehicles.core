@@ -1,4 +1,4 @@
-﻿namespace Vehicles.Core;
+﻿namespace vehicles.core.interfaces;
 
 public interface ISwimmable
 {
